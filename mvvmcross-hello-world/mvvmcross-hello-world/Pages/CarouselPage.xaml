@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                      x:Class="mvvmcross_hello_world.Pages.CarouselPage">
+    <Grid>
+        <CarouselView ItemsSource="{Binding CarouselItems}" PeekAreaInsets="0" IsSwipeEnabled="True" Loop="True">
+            <CarouselView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="0" SnapPointsType="MandatorySingle" />
+            </CarouselView.ItemsLayout>
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout BackgroundColor="{Binding Color}">
+                        <Label Text="{Binding Name}" TextColor="Black" HeightRequest="40" HorizontalTextAlignment="Center"/>
+                        <CollectionView ItemsSource="{Binding Items}" ItemSizingStrategy="MeasureFirstItem" VerticalOptions="Fill" HorizontalOptions="Fill">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="10" HorizontalItemSpacing="10" Span="2"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid BackgroundColor="{Binding Color}" HeightRequest="200">
+                                        <Label Text="{Binding Name}" TextColor="Black" TextDecorations="Strikethrough" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+    </Grid>
+</views:MvxContentPage>
